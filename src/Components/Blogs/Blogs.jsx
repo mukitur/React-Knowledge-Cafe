@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Blog from '../Blog/Blog';
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -8,8 +9,11 @@ const Blogs = () => {
       .then((data) => setBlogs(data));
   }, []);
   return (
-    <div className="md:w-2/3 px-4">
+    <div className="md:w-2/3 ">
       <h3 className="text-4xl">Blogs: {blogs.length} </h3>
+      {blogs.map((blog) => (
+        <Blog key={blog.id} blog={blog}></Blog>
+      ))}
     </div>
   );
 };
